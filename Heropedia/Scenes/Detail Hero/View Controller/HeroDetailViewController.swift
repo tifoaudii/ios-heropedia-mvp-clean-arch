@@ -10,6 +10,7 @@ import Kingfisher
 
 final class HeroDetailViewController: UIViewController {
     
+    // MARK:- View
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .red
@@ -48,9 +49,11 @@ final class HeroDetailViewController: UIViewController {
         return stackView
     }()
     
-    var hero: Hero
-    var similarHero: [Hero] = []
+    // MARK:- Properties
+    private let hero: Hero
+    private let similarHero: [Hero]
     
+    // MARK:- Initializer
     init(hero: Hero, similarHero: [Hero]) {
         self.hero = hero
         self.similarHero = similarHero
@@ -61,6 +64,7 @@ final class HeroDetailViewController: UIViewController {
         fatalError()
     }
     
+    // MARK:- Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHeroDetailStackView()
@@ -68,6 +72,7 @@ final class HeroDetailViewController: UIViewController {
         renderSimilarHero()
     }
     
+    // MARK:- Private functions
     private func setupView() {
         view.backgroundColor = .white
         view.addSubview(imageView)

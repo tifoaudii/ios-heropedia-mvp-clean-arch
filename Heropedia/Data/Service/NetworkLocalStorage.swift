@@ -9,9 +9,11 @@ import Foundation
 
 final class NetworkLocalStorage {
     
+    // MARK:- Properties
     private let userDefault: UserDefaults?
     private let suiteName: String?
     
+    // MARK:- Initializer
     init(suiteName: String?) {
         
         self.suiteName = suiteName
@@ -26,6 +28,8 @@ final class NetworkLocalStorage {
     static func shared(suiteName: String? = nil) -> NetworkLocalStorage {
         return NetworkLocalStorage(suiteName: suiteName)
     }
+    
+    // MARK:- Public functions
     
     func save<TargetType: Codable>(
         key: String,
@@ -55,6 +59,7 @@ final class NetworkLocalStorage {
         }
     }
     
+    // MARK:- Private functions
     
     private func encode<TargetType: Codable>(from data: TargetType) throws -> String {
         let encoder = JSONEncoder()

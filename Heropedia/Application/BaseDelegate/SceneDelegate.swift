@@ -9,22 +9,23 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    let appDIContainer = AppDIContainer()
+    
     var window: UIWindow?
-
+    var appRouter: AppRouter?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         window = UIWindow(windowScene: windowScene)
         window?.windowScene = windowScene
         
+        let navigationController = UINavigationController()
+        window?.rootViewController = navigationController
         
-        let service = NetworkService(dataStore: DefaultNetworkDataStore(), cacheRepository: DefaultNetworkCacheRepository())
-        let presenter = DefaultHeroListPresenter(service: service)
-        let heroListVC = HeroListViewController(presenter: presenter)
-        presenter.setViewController(viewController: heroListVC)
-        
-        let rootViewController = UINavigationController(rootViewController: heroListVC)
-        window?.rootViewController = rootViewController
+        appRouter = AppRouter(navigationController: navigationController, appDIContainer: appDIContainer)
+        appRouter?.start()
         window?.makeKeyAndVisible()
     }
 }

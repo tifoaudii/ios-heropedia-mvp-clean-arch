@@ -12,12 +12,12 @@ protocol HeroListViewPresentationProtocol: class {
     func showHero()
     func reloadData()
     func showError()
-    func navigateToHeroDetailScreen(hero: Hero, similarHero: [Hero])
     func showInternetConnectionProblemMessage()
 }
 
 final class HeroListViewController: UIViewController {
     
+    // MARK:- View
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -55,6 +55,7 @@ final class HeroListViewController: UIViewController {
         return collectionView
     }()
     
+    // MARK:- Properties
     private let presenter: HeroListPresenter
     
     enum State {
@@ -69,6 +70,7 @@ final class HeroListViewController: UIViewController {
         }
     }
     
+    // MARK:- Initializer
     init(presenter: HeroListPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -78,15 +80,35 @@ final class HeroListViewController: UIViewController {
         fatalError()
     }
     
+    // MARK:- Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         fetchHero()
     }
     
-    func fetchHero() {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startNetworkMonitoring()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopNetworkMonitoring()
+    }
+    
+    // MARK:- Private functions
+    private func fetchHero() {
         presenter.loadHero()
         presenter.fetchHero()
+    }
+    
+    private func startNetworkMonitoring() {
+        presenter.startNetworkMonitoring()
+    }
+    
+    private func stopNetworkMonitoring() {
+        presenter.stopNetworkMonitoring()
     }
     
     private func setupView() {
@@ -122,6 +144,7 @@ final class HeroListViewController: UIViewController {
     }
 }
 
+// MARK:- UITableViewDelegate & UITableViewDataSource Implementation
 extension HeroListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return state == .populated ? presenter.filteredHeroes.count : 1
@@ -168,6 +191,7 @@ extension HeroListViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+// MARK:- UICollectionViewDelegate & UICollectionViewDataSource Implementation
 extension HeroListViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.roles.count
@@ -197,6 +221,7 @@ extension HeroListViewController: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
+// MARK:- HeroListViewPresentationProtocol Implementation
 extension HeroListViewController: HeroListViewPresentationProtocol {
     func showHero() {
         state = .populated
@@ -209,11 +234,6 @@ extension HeroListViewController: HeroListViewPresentationProtocol {
     func reloadData() {
         tableView.reloadData()
         collectionView.reloadData()
-    }
-    
-    func navigateToHeroDetailScreen(hero: Hero, similarHero: [Hero]) {
-        let detailHeroVC = HeroDetailViewController(hero: hero, similarHero: similarHero)
-        navigationController?.pushViewController(detailHeroVC, animated: true)
     }
     
     func showInternetConnectionProblemMessage() {

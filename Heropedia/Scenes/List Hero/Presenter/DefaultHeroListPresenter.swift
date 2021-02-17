@@ -6,6 +6,11 @@
 //
 
 import Foundation
+import Reachability
+
+public struct HeroListPresenterCallback {
+    let showHeroDetail: (_ hero: Hero, _ similarHero: [Hero]) -> Void
+}
 
 public enum HeroDetailViewKind: CaseIterable {
     case name
@@ -23,6 +28,8 @@ protocol HeroListPresenter {
     var roles: [Role] { get }
     var selectedRole: Role { get }
     
+    func startNetworkMonitoring()
+    func stopNetworkMonitoring()
     func loadHero()
     func fetchHero()
     func filterHeroWith(role: Role)
@@ -31,23 +38,31 @@ protocol HeroListPresenter {
 
 final class DefaultHeroListPresenter: HeroListPresenter {
     
+    // MARK:- Private properties
     private var _allHeroes: [Hero] = []
     private var _filteredHeroes: [Hero] = []
     private var _roles: [Role] = Role.allCases
     private var _selectedRole: Role = .all
     
     private weak var viewController: HeroListViewPresentationProtocol?
+    private var reachability: Reachability?
     
+    // MARK:- Dependency
     private let service: NetworkService
+    private let callBack: HeroListPresenterCallback?
     
-    init(service: NetworkService) {
+    // MARK:- Initializer
+    init(service: NetworkService, callback: HeroListPresenterCallback? = nil) {
         self.service = service
+        self.callBack = callback
     }
     
+    // MARK:- Setter
     func setViewController(viewController: HeroListViewPresentationProtocol) {
         self.viewController = viewController
     }
     
+    // MARK:- HeroListPresenter Implementation
     var allHeroes: [Hero] {
         return _allHeroes
     }
@@ -98,9 +113,24 @@ final class DefaultHeroListPresenter: HeroListPresenter {
     func didSelectHeroAt(index: Int) {
         let selectedHero = _filteredHeroes[index]
         let similarHero = getSimilarHeroFrom(attribute: selectedHero.primaryAttr)
-        viewController?.navigateToHeroDetailScreen(hero: selectedHero, similarHero: similarHero)
+        callBack?.showHeroDetail(selectedHero, similarHero)
     }
     
+    func startNetworkMonitoring() {
+        reachability = try? Reachability()
+        
+        do { try? reachability?.startNotifier() }
+        reachability?.whenUnreachable = { [weak self] _ in
+            self?.viewController?.showInternetConnectionProblemMessage()
+        }
+    }
+    
+    func stopNetworkMonitoring() {
+        reachability?.stopNotifier()
+        reachability = nil
+    }
+    
+    // MARK:- Private functions
     private func getSimilarHeroFrom(attribute: PrimaryAttr) -> [Hero] {
         switch attribute {
         case .agi:

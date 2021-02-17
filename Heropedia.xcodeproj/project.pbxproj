@@ -13,6 +13,11 @@
 		CE30764B25D6975A00C598C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE30764925D6975A00C598C7 /* LaunchScreen.storyboard */; };
 		CE30765625D6975B00C598C7 /* HeropediaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30765525D6975B00C598C7 /* HeropediaTests.swift */; };
 		CE30766125D6975B00C598C7 /* HeropediaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30766025D6975B00C598C7 /* HeropediaUITests.swift */; };
+		CE36DC8725DCBBA300DF06E5 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = CE36DC8625DCBBA300DF06E5 /* Reachability */; };
+		CE36DC8C25DCF39800DF06E5 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DC8B25DCF39800DF06E5 /* AppRouter.swift */; };
+		CE36DC9425DCF3E200DF06E5 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DC9325DCF3E200DF06E5 /* AppDIContainer.swift */; };
+		CE36DC9925DCF40700DF06E5 /* HeroSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DC9825DCF40700DF06E5 /* HeroSceneDIContainer.swift */; };
+		CE36DCA525DCF48E00DF06E5 /* HeroRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DCA425DCF48E00DF06E5 /* HeroRouter.swift */; };
 		CE41168225DB73CC00B7F6CF /* DefaultHeroListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41168125DB73CC00B7F6CF /* DefaultHeroListPresenter.swift */; };
 		CE41168A25DB741700B7F6CF /* NetworkDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41168925DB741700B7F6CF /* NetworkDataStore.swift */; };
 		CE41169F25DB9EBC00B7F6CF /* NetworkCacheRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41169E25DB9EBC00B7F6CF /* NetworkCacheRepository.swift */; };
@@ -60,6 +65,10 @@
 		CE30765C25D6975B00C598C7 /* HeropediaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeropediaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE30766025D6975B00C598C7 /* HeropediaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeropediaUITests.swift; sourceTree = "<group>"; };
 		CE30766225D6975B00C598C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE36DC8B25DCF39800DF06E5 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		CE36DC9325DCF3E200DF06E5 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		CE36DC9825DCF40700DF06E5 /* HeroSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSceneDIContainer.swift; sourceTree = "<group>"; };
+		CE36DCA425DCF48E00DF06E5 /* HeroRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroRouter.swift; sourceTree = "<group>"; };
 		CE41168125DB73CC00B7F6CF /* DefaultHeroListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHeroListPresenter.swift; sourceTree = "<group>"; };
 		CE41168925DB741700B7F6CF /* NetworkDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataStore.swift; sourceTree = "<group>"; };
 		CE41169E25DB9EBC00B7F6CF /* NetworkCacheRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCacheRepository.swift; sourceTree = "<group>"; };
@@ -81,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5FBD8125DC104300B052CA /* Toast in Frameworks */,
+				CE36DC8725DCBBA300DF06E5 /* Reachability in Frameworks */,
 				CEAF079025DA6D3A00DFC1AD /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +164,14 @@
 			path = HeropediaUITests;
 			sourceTree = "<group>";
 		};
+		CE36DCA325DCF48300DF06E5 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CE36DCA425DCF48E00DF06E5 /* HeroRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		CE41169125DB760300B7F6CF /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,16 +204,11 @@
 			isa = PBXGroup;
 			children = (
 				CE41169625DB763700B7F6CF /* BaseDelegate */,
-				CE41169525DB763100B7F6CF /* DIContainer */,
+				CE36DC8B25DCF39800DF06E5 /* AppRouter.swift */,
+				CE36DC9325DCF3E200DF06E5 /* AppDIContainer.swift */,
+				CE36DC9825DCF40700DF06E5 /* HeroSceneDIContainer.swift */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		CE41169525DB763100B7F6CF /* DIContainer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DIContainer;
 			sourceTree = "<group>";
 		};
 		CE41169625DB763700B7F6CF /* BaseDelegate */ = {
@@ -227,6 +240,7 @@
 		CEAF077725DA5B0300DFC1AD /* List Hero */ = {
 			isa = PBXGroup;
 			children = (
+				CE36DCA325DCF48300DF06E5 /* Router */,
 				CEAF077A25DA5B2B00DFC1AD /* Cell */,
 				CEAF077B25DA5B4D00DFC1AD /* Presenter */,
 				CEAF077925DA5B2100DFC1AD /* View Controller */,
@@ -304,6 +318,7 @@
 			packageProductDependencies = (
 				CEAF078F25DA6D3A00DFC1AD /* Kingfisher */,
 				CE5FBD8025DC104300B052CA /* Toast */,
+				CE36DC8625DCBBA300DF06E5 /* Reachability */,
 			);
 			productName = Heropedia;
 			productReference = CE30763B25D6975900C598C7 /* Heropedia.app */;
@@ -379,6 +394,7 @@
 			packageReferences = (
 				CEAF078E25DA6D3A00DFC1AD /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CE5FBD7F25DC104300B052CA /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				CE36DC8525DCBBA300DF06E5 /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = CE30763C25D6975900C598C7 /* Products */;
 			projectDirPath = "";
@@ -422,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE36DCA525DCF48E00DF06E5 /* HeroRouter.swift in Sources */,
 				CE4116A425DB9EE900B7F6CF /* NetworkLocalStorage.swift in Sources */,
 				CE4116A925DBCF1C00B7F6CF /* ErrorStateCell.swift in Sources */,
 				CEAF075C25DA38AC00DFC1AD /* HeroListViewController.swift in Sources */,
@@ -433,7 +450,10 @@
 				CE41169F25DB9EBC00B7F6CF /* NetworkCacheRepository.swift in Sources */,
 				CE41168225DB73CC00B7F6CF /* DefaultHeroListPresenter.swift in Sources */,
 				CEAF074825DA2CE600DFC1AD /* HeroCell.swift in Sources */,
+				CE36DC9425DCF3E200DF06E5 /* AppDIContainer.swift in Sources */,
 				CEAF077E25DA5BF100DFC1AD /* HeroDetailViewController.swift in Sources */,
+				CE36DC9925DCF40700DF06E5 /* HeroSceneDIContainer.swift in Sources */,
+				CE36DC8C25DCF39800DF06E5 /* AppRouter.swift in Sources */,
 				CEAF073A25DA171F00DFC1AD /* NetworkService.swift in Sources */,
 				CEAF078725DA685500DFC1AD /* SimilarHeroView.swift in Sources */,
 				CE30764125D6975900C598C7 /* SceneDelegate.swift in Sources */,
@@ -763,6 +783,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE36DC8525DCBBA300DF06E5 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 		CE5FBD7F25DC104300B052CA /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
@@ -782,6 +810,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE36DC8625DCBBA300DF06E5 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE36DC8525DCBBA300DF06E5 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
 		CE5FBD8025DC104300B052CA /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE5FBD7F25DC104300B052CA /* XCRemoteSwiftPackageReference "Toast-Swift" */;
