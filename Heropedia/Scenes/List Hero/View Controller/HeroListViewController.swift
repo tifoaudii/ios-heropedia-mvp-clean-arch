@@ -18,7 +18,7 @@ protocol HeroListViewPresentationProtocol: class {
 final class HeroListViewController: UIViewController {
     
     // MARK:- View
-    private lazy var tableView: UITableView = {
+    private(set) lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -38,7 +38,7 @@ final class HeroListViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var collectionView: UICollectionView = {
+    private(set) lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)

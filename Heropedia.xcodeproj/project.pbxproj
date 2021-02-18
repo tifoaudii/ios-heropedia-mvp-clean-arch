@@ -18,6 +18,11 @@
 		CE36DC9425DCF3E200DF06E5 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DC9325DCF3E200DF06E5 /* AppDIContainer.swift */; };
 		CE36DC9925DCF40700DF06E5 /* HeroSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DC9825DCF40700DF06E5 /* HeroSceneDIContainer.swift */; };
 		CE36DCA525DCF48E00DF06E5 /* HeroRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DCA425DCF48E00DF06E5 /* HeroRouter.swift */; };
+		CE36DCAF25DD008B00DF06E5 /* HeroListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DCAE25DD008B00DF06E5 /* HeroListViewControllerTest.swift */; };
+		CE36DCB725DD00A200DF06E5 /* HeroListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DCB625DD00A200DF06E5 /* HeroListPresenterTest.swift */; };
+		CE36DCBE25DD201100DF06E5 /* NetworkServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DCBD25DD201100DF06E5 /* NetworkServiceTest.swift */; };
+		CE36DCC725DD222500DF06E5 /* NetworkDataStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DCC625DD222500DF06E5 /* NetworkDataStoreMock.swift */; };
+		CE36DCCF25DD225C00DF06E5 /* NetworkCacheRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE36DCCE25DD225C00DF06E5 /* NetworkCacheRepositoryMock.swift */; };
 		CE41168225DB73CC00B7F6CF /* DefaultHeroListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41168125DB73CC00B7F6CF /* DefaultHeroListPresenter.swift */; };
 		CE41168A25DB741700B7F6CF /* NetworkDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41168925DB741700B7F6CF /* NetworkDataStore.swift */; };
 		CE41169F25DB9EBC00B7F6CF /* NetworkCacheRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE41169E25DB9EBC00B7F6CF /* NetworkCacheRepository.swift */; };
@@ -69,6 +74,11 @@
 		CE36DC9325DCF3E200DF06E5 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		CE36DC9825DCF40700DF06E5 /* HeroSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSceneDIContainer.swift; sourceTree = "<group>"; };
 		CE36DCA425DCF48E00DF06E5 /* HeroRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroRouter.swift; sourceTree = "<group>"; };
+		CE36DCAE25DD008B00DF06E5 /* HeroListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListViewControllerTest.swift; sourceTree = "<group>"; };
+		CE36DCB625DD00A200DF06E5 /* HeroListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListPresenterTest.swift; sourceTree = "<group>"; };
+		CE36DCBD25DD201100DF06E5 /* NetworkServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTest.swift; sourceTree = "<group>"; };
+		CE36DCC625DD222500DF06E5 /* NetworkDataStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataStoreMock.swift; sourceTree = "<group>"; };
+		CE36DCCE25DD225C00DF06E5 /* NetworkCacheRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCacheRepositoryMock.swift; sourceTree = "<group>"; };
 		CE41168125DB73CC00B7F6CF /* DefaultHeroListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHeroListPresenter.swift; sourceTree = "<group>"; };
 		CE41168925DB741700B7F6CF /* NetworkDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataStore.swift; sourceTree = "<group>"; };
 		CE41169E25DB9EBC00B7F6CF /* NetworkCacheRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCacheRepository.swift; sourceTree = "<group>"; };
@@ -149,6 +159,8 @@
 		CE30765425D6975B00C598C7 /* HeropediaTests */ = {
 			isa = PBXGroup;
 			children = (
+				CE36DCBC25DD1FFD00DF06E5 /* Service */,
+				CE36DCAC25DD005300DF06E5 /* Scenes */,
 				CE30765525D6975B00C598C7 /* HeropediaTests.swift */,
 				CE30765725D6975B00C598C7 /* Info.plist */,
 			);
@@ -170,6 +182,41 @@
 				CE36DCA425DCF48E00DF06E5 /* HeroRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		CE36DCAC25DD005300DF06E5 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				CE36DCAD25DD005B00DF06E5 /* List Hero */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		CE36DCAD25DD005B00DF06E5 /* List Hero */ = {
+			isa = PBXGroup;
+			children = (
+				CE36DCAE25DD008B00DF06E5 /* HeroListViewControllerTest.swift */,
+				CE36DCB625DD00A200DF06E5 /* HeroListPresenterTest.swift */,
+			);
+			path = "List Hero";
+			sourceTree = "<group>";
+		};
+		CE36DCBC25DD1FFD00DF06E5 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CE36DCC525DD220D00DF06E5 /* Mock */,
+				CE36DCBD25DD201100DF06E5 /* NetworkServiceTest.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CE36DCC525DD220D00DF06E5 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				CE36DCC625DD222500DF06E5 /* NetworkDataStoreMock.swift */,
+				CE36DCCE25DD225C00DF06E5 /* NetworkCacheRepositoryMock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		CE41169125DB760300B7F6CF /* Data */ = {
@@ -464,7 +511,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE36DCAF25DD008B00DF06E5 /* HeroListViewControllerTest.swift in Sources */,
 				CE30765625D6975B00C598C7 /* HeropediaTests.swift in Sources */,
+				CE36DCC725DD222500DF06E5 /* NetworkDataStoreMock.swift in Sources */,
+				CE36DCBE25DD201100DF06E5 /* NetworkServiceTest.swift in Sources */,
+				CE36DCCF25DD225C00DF06E5 /* NetworkCacheRepositoryMock.swift in Sources */,
+				CE36DCB725DD00A200DF06E5 /* HeroListPresenterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
