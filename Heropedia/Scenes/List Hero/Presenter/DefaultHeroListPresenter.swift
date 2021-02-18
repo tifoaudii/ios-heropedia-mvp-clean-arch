@@ -84,7 +84,7 @@ final class DefaultHeroListPresenter: HeroListPresenter {
             self?.populateData(hero: hero)
             self?.viewController?.showHero()
         } onFailure: { [weak self] (error: ErrorResponse) in
-            self?.viewController?.showInternetConnectionProblemMessage()
+            self?.viewController?.showError()
         }
     }
     
@@ -92,9 +92,7 @@ final class DefaultHeroListPresenter: HeroListPresenter {
         service.loadHero { [weak self] (hero: [Hero]) in
             self?.populateData(hero: hero)
             self?.viewController?.showHero()
-        } onFailure: { [weak self] (error: Error) in
-            self?.viewController?.showError()
-        }
+        } onFailure: { (_) in }
     }
     
     func filterHeroWith(role: Role) {

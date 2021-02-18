@@ -80,6 +80,8 @@ final class HeroDetailViewController: UIViewController {
         view.addSubview(similarHeroTitleSectionLabel)
         view.addSubview(similarHeroStackView)
         
+        navigationItem.title = hero.localizedName
+        
         imageView.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
             leading: view.leadingAnchor,

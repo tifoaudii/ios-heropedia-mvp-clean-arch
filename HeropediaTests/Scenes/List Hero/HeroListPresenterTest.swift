@@ -133,7 +133,7 @@ class HeroListPresenterTest: XCTestCase {
         sut.fetchHero()
         
         // Then
-        XCTAssert(viewControllerMock.showInternetConnectionProblemCalled)
+        XCTAssert(viewControllerMock.showErrorCalled)
     }
     
     func testPresenterShouldAskNetworkServiceToLoadHeroFromLocalStorage() {

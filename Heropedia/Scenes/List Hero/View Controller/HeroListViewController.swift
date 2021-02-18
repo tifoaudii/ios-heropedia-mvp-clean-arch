@@ -64,7 +64,7 @@ final class HeroListViewController: UIViewController {
         case populated
     }
     
-    private(set) var state: State = .error {
+    private(set) var state: State = .initial {
         didSet {
             tableView.reloadData()
         }
@@ -115,6 +115,8 @@ final class HeroListViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(tableView)
         view.addSubview(collectionView)
+        
+        navigationItem.title = "Heropedia"
         
         collectionView.anchor(
             top: view.safeAreaLayoutGuide.topAnchor,
